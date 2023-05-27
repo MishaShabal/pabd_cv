@@ -8,7 +8,7 @@ from requests import request
 
 class MyTestCase(unittest.TestCase):
     def test_home(self):
-        response = requests.request('GET', 'http://localhost:1234/')
+        response = requests.request('GET', 'http://localhost:1675/')
         sample = response.content.decode()
         self.assertEqual(sample, 'Home page')
 
