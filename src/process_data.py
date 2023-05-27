@@ -10,8 +10,10 @@ import click
 
 
 @click.command()
-@click.option('-i', '--in_dir', default='/home/misha/PycharmProjects/pabd_cv/data/raw/kaggle')
-@click.option('-o', '--out_dir', default='/home/misha/PycharmProjects/pabd_cv/data/processed/PetImages')
+@click.option('-i', '--in_dir',
+              default='/home/misha/PycharmProjects/pabd_cv/data/raw/kaggle')
+@click.option('-o', '--out_dir',
+              default='/home/misha/PycharmProjects/pabd_cv/data/processed/PetImages')
 @click.option('-n', '--n_img', default=20)
 def preprocess_data(in_dir, out_dir, n_img):
     # make_out_dirs(out_dir)
