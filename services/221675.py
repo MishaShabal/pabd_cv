@@ -3,7 +3,7 @@ import pathlib
 
 from flask import Flask, request
 import tensorflow as tf
-
+from utils import data_to_img, predict_imagenet, predict_bimary
 
 app = Flask('Image classifier')
 resnet = tf.keras.applications.ResNet101()
@@ -20,30 +20,18 @@ def home():
 
 
 @app.route('/classify/imagenet', methods=['POST', 'GET'])
-def classify():
+def classify_imagenet():
     data = request.data
-    img = tf.io.decode_jpeg(data)
-    img_t = tf.expand_dims(img, axis=0)
-    img_t = tf.image.resize(img_t, (224, 224))
-    out = resnet(img_t)
-    idxs = tf.argsort(out, direction='DESCENDING')[0][:3].numpy()
-    out = ', '.join([categories_ru[int(i)] for i in idxs])
+    img = data_to_img(data)
+    out = ', '.join([categories_ru[int(i)] for i in predict_imagenet(img, resnet)])
     return out
 
 
 @app.route('/classify/binary', methods=['POST'])
 def classify_binary():
     data = request.data
-    img = tf.io.decode_jpeg(data)
-    img_t = tf.expand_dims(img, axis=0)
-    img_t = tf.image.resize(img_t, (180, 180))
-    model = tf.keras.models.load_model('models/my_model')
-    out = model(img_t)
-    print(out)
-    dog_probability = out.numpy()[0, 0]
-    print(dog_probability)
-    idx = dog_probability > 0.5
-    return ('Cat', 'Dog')[idx]
+    img = data_to_img(data)
+    return predict_bimary(img, 'models/my_model')
 
 
 if __name__ == '__main__':
