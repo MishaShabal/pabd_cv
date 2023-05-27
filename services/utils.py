@@ -1,10 +1,10 @@
 import tensorflow as tf
 
 
-def data_to_img(data):
+def data_to_img(data, size):
     img = tf.io.decode_jpeg(data)
     img_t = tf.expand_dims(img, axis=0)
-    return tf.image.resize(img_t, (180, 180))
+    return tf.image.resize(img_t, (size, size))
 
 
 def predict_imagenet(img, model):
