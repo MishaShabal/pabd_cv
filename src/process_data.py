@@ -5,9 +5,6 @@ import shutil
 
 import click
 
-# in_dir = 'data/raw/kaggle'
-# out_dir = './data/processed/PetImages'
-
 
 @click.command()
 @click.option('-i', '--in_dir',

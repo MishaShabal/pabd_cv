@@ -6,3 +6,6 @@ numpy
 torch
 torchvision
 tensorflow
+keras
+click
+future
