@@ -3,10 +3,15 @@ Take images from source dir and put in out dir subfolders: Cat and Dog"""
 import os
 import shutil
 
-in_dir = 'data/raw/kaggle'
-out_dir = 'data/processed/PetImages'
+import click
+
+# in_dir = 'data/raw/kaggle'
+# out_dir = './data/processed/PetImages'
 
 
+@click.command()
+@click.option('-i', '--in_dir', default='data\\raw\\kaggle')
+@click.option('-o', '--out_dir', default='data\\processed\\PetImages')
 def preprocess_data(in_dir, out_dir):
     # make_out_dirs(out_dir)
     copy_files(in_dir, out_dir)
@@ -37,4 +42,4 @@ def copy_files(in_dir, out_dir):
 
 
 if __name__ == '__main__':
-    preprocess_data(in_dir, out_dir)
+    preprocess_data()
