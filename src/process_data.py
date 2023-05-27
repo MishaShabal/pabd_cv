@@ -12,33 +12,36 @@ import click
 @click.command()
 @click.option('-i', '--in_dir', default='data\\raw\\kaggle')
 @click.option('-o', '--out_dir', default='data\\processed\\PetImages')
-def preprocess_data(in_dir, out_dir):
+@click.option('-n', '--n_img', default=20)
+def preprocess_data(in_dir, out_dir, n_img):
     # make_out_dirs(out_dir)
-    copy_files(in_dir, out_dir)
+    copy_files(in_dir, out_dir, n_img)
 
 
 def make_out_dirs(out_dir):
     if os.path.exists(out_dir):
         os.remove(out_dir)
         os.mkdir(out_dir)
+        os.mkdir(os.path.join(out_dir, 'Cat'))
+        os.mkdir(os.path.join(out_dir, 'Dog'))
 
-    os.mkdir(os.path.join(out_dir, 'Cat'))
-    os.mkdir(os.path.join(out_dir, 'Dog'))
 
-
-def copy_files(in_dir, out_dir):
+def copy_files(in_dir, out_dir, n_img):
     all_files = os.listdir(in_dir)
+    cat_imgs = [img for img in all_files if img.startswith('cat')]
+    dog_imgs = [img for img in all_files if img.startswith('dog')]
 
-    for img_name in all_files:
-        if img_name.startswith('cat'):
-            shutil.copy2(
-                os.path.join(in_dir, img_name),
-                os.path.join(out_dir, 'Cat'))
+    for cat_img in cat_imgs[:n_img]:
+        shutil.copy2(
+            os.path.join(in_dir, cat_img),
+            os.path.join(out_dir, 'Cat')
+        )
 
-        if img_name.startswith('dog'):
-            shutil.copy2(
-                os.path.join(in_dir, img_name),
-                os.path.join(out_dir, 'Dog'))
+    for dog_img in dog_imgs[:n_img]:
+        shutil.copy2(
+                os.path.join(in_dir, dog_img),
+                os.path.join(out_dir, 'Dog')
+        )
 
 
 if __name__ == '__main__':
