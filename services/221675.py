@@ -7,7 +7,7 @@ resnet = tf.keras.applications.ResNet101()
 with open('../data/imgnet_cats_ru.txt', encoding='utf-8') as f:
     cats = f.readlines()
 
-cats_ru = [s.rstrip() for s in cats]
+categories_ru = [s.rstrip() for s in cats]
 
 
 @app.route('/')
