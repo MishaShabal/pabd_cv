@@ -17,4 +17,5 @@ client = boto3.clent(
 
 client.upload_file(model_path, 'pabdcv', '221675/model.zip')
 
-for key in client.list(Busket='pabdcv', Key= '')
+for key in client.list(Busket='pabdcv')['Contents']:
+    print('Key')
