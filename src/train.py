@@ -10,9 +10,9 @@ from model import make_model
 # @click.option('-o', '--out_dir',
 #               default='/home/misha/PycharmProjects/pabd_cv/models/my_model')
 @click.option('-i', '--in_dir',
-              default='data/processed/PetImages')
+              default='pabd_cv/data/processed/PetImages')
 @click.option('-o', '--out_dir',
-              default='models/my_model')
+              default='pabd_cv/models/my_model')
 @click.option('-e', '--epochs', default=4)
 @click.option('-l', '--lr', default=1e-3)
 @click.option('-b', '--batch_size', default=2)
