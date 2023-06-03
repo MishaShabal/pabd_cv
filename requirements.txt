@@ -9,3 +9,5 @@ tensorflow
 keras
 click
 future
+boto3
+dvc
