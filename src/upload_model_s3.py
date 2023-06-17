@@ -16,9 +16,5 @@ client = boto3.client(
     aws_secret_access_key=SECRET_KEY
 )
 
-
-# Получить список объектов в строке
 client.upload_file(model_path, 'pabdcv', '221675/model.zip')
 
-# for key in client.list(Busket='pabdcv')['Contents']:
-#     print('Key')
