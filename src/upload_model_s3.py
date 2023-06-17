@@ -6,8 +6,8 @@ config = dotenv.dotenv_values('/home/misha/PycharmProjects/pabd_cv/.env')
 ACCESS_KEY = config['ACCESS_KEY']
 SECRET_KEY = config['SECRET_KEY']
 
-model_path = '/home/misha/PycharmProjects/pabd_cv/models/model.zip'
-# model_path = 'models/my_model.zip'
+# model_path = '/home/misha/PycharmProjects/pabd_cv/models/model.zip'
+model_path = 'models/my_model.zip'
 
 client = boto3.client(
     's3',

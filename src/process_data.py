@@ -11,11 +11,11 @@ import click
 # @click.option('-i', '--in_dir',
 #               default='/home/misha/PycharmProjects/pabd_cv/data/raw/kaggle')
 @click.option('-i', '--in_dir',
-              default='pabd_cv/data/raw/kaggle')
+              default='data/raw/kaggle')
 # @click.option('-o', '--out_dir',
 #               default='/home/misha/PycharmProjects/pabd_cv/data/processed/PetImages')
 @click.option('-o', '--out_dir',
-              default='pabd_cv/data/processed/PetImages')
+              default='data/processed/PetImages')
 @click.option('-n', '--n_img', default=20)
 @click.option('-s', '--img_size', default=180)
 def preprocess_data(in_dir, out_dir, n_img, img_size):
